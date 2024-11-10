@@ -50,5 +50,20 @@ namespace App
         void Update()
         {
         }
+
+        public void TouchRequest()
+        {
+            
+        }
+
+        public void DestoryTouchIcon()
+        {
+            
+        }
+
+        public bool IsTouched()
+        {
+            return Input.GetMouseButton(0) || Input.touchCount > 0;
+        }
     }
 }
