@@ -230,6 +230,8 @@ namespace App
                 // 終了後コールバックを呼び出す
                 cbFunc.Invoke();
             }
+
+            yield return null;
         }
 
         /// <summary>
@@ -244,6 +246,8 @@ namespace App
                 // 終了後コールバックを呼び出す
                 cbFunc.Invoke();
             }
+
+            yield return null;
         }
 
         #endregion
