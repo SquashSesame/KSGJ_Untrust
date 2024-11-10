@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textName: {fileID: 0}
   cvgpName: {fileID: 0}
-  cvgpMessageWithFace: {fileID: 0}
+  cvgpMessageWithFace: {fileID: 465208932}
   cvgpMessage: {fileID: 465208932}
   textAreaWithFace: {fileID: 1283522257}
   textAreaLog: {fileID: 0}
@@ -974,7 +974,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465208928}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -2248,7 +2248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1468813985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2513,6 +2513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a123bfa4570468cba5e6c278295a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePhase: 0
 --- !u!114 &1695375256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2710,7 +2711,7 @@ Canvas:
   m_GameObject: {fileID: 1867798263}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1896086763}
   m_PlaneDistance: 25
   m_PixelPerfect: 0

@@ -28,11 +28,7 @@ namespace App
 
         IEnumerator Scenario_Prologue()
         {
-            // Fade in
-            if (Fader.Instance.GetFadeLevel() < 1.0f) {
-                yield return Fader.YieldFadeOut(ConstDef.FADETIME);
-            }
-
+            Fader.SetFadeLevel(1);
             Window.ClearMessage();
             Window.ForceClose();
 
@@ -43,9 +39,9 @@ namespace App
             yield return Window.YieldCloseTelop();
 
             yield return Window.YieldOpen();
-            Window.SetMessage("ここは多くの噂が集まるバー");
+            Window.SetMessage("ここは多くの噂が集まるバー@");
             yield return Window.YieldWaitTouch();
-            Window.SetMessage("噂話を聞いてみよう");
+            Window.SetMessage("噂話を聞いてみよう@");
             yield return Window.YieldWaitTouch();
             
             yield return Window.YieldClose();

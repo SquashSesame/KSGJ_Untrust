@@ -27,8 +27,8 @@ namespace App
         [SerializeField] private TMP_Text textMessage = null;
         [SerializeField] private UnityEngine.UI.Image imgTelop = null;
 
-        static Color colAlpha0 = new Color(1, 1, 1, 0);
-        static Color colBlackAlpha0 = new Color(0, 0, 0, 0);
+        static Color colWhiteAlpha0 = new Color(1, 1, 1, 1);
+        static Color colBlackAlpha0 = new Color(0, 0, 0, 1);
         private const float fadeTime = ConstDef.FADETIME;
 
         private Queue<string> logQueue = new Queue<string>();
@@ -77,18 +77,17 @@ namespace App
 
         public IEnumerator YieldOpen()
         {
-            float _time = 1;
-            while (_time > 0)
+            cvgpMessageWithFace.alpha = 0;
+            cvgpMessageWithFace.gameObject.SetActive(true);
+            float _time = 0;
+            while (_time < fadeTime)
             {
-                _time -= Time.deltaTime;
-                if (_time < 0)
+                _time += Time.deltaTime;
+                if (_time > 0)
                 {
                     _time = 0;
                 }
-                else
-                {
-                    cgTelop.alpha = Mathf.Lerp(0, 1, _time / fadeTime);
-                }
+                cvgpMessageWithFace.alpha = Mathf.Lerp(0, 1, _time / fadeTime);
                 yield return null;
             }
             yield return null;
@@ -103,20 +102,21 @@ namespace App
                 if (_time >= fadeTime)
                 {
                     _time = fadeTime;
-                    ForceClose();
                 }
                 else
                 {
-                    cgTelop.alpha = Mathf.Lerp(1, 0, _time / fadeTime);
+                    cvgpMessageWithFace.alpha = Mathf.Lerp(1, 0, _time / fadeTime);
                 }
                 yield return null;
             }
+            ForceClose();
             yield return null;
         }
         
         public void ForceClose()
         {
             cvgpMessageWithFace.alpha = 0;
+            cvgpMessageWithFace.gameObject.SetActive(false);
         }
 
         public void ClearMessage()
@@ -130,7 +130,7 @@ namespace App
             imgTelop.color = colBlackAlpha0;
             textMessage.color = Color.white;
             textMessage.text = message;
-            this.gameObject.SetActive(true);
+            cgTelop.gameObject.SetActive(true);
             float _time = 0;
             while (_time < fadeTime)
             {
@@ -162,6 +162,7 @@ namespace App
                 cgTelop.alpha = Mathf.Lerp(1, 0, _time / fadeTime);
                 yield return null;
             }
+            cgTelop.gameObject.SetActive(false);
             textMessage.text = "";
             yield return null;
         }
