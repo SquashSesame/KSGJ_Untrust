@@ -24,7 +24,8 @@ namespace App
         static Color colWhiteAlpha0 = new Color(1, 1, 1, 1);
         static Color colBlackAlpha0 = new Color(0, 0, 0, 1);
         private const float defFadeTime = ConstDef.FADETIME;
-        
+
+        private const float SELECTITEM_HEIGHT = 110;
         private const char KEYSTOP_CODE0 = '@';
         private const char KEYSTOP_CODE1 = '＠';
 
@@ -85,6 +86,8 @@ namespace App
             yield return null;
         }
 
+        #region Message
+        
         public IEnumerator OpenMessage()
         {
             cvgpMessageWithFace.alpha = 0;
@@ -98,6 +101,40 @@ namespace App
             ForceClose();
             yield return null;
         }
+
+        public IEnumerator Message(string message)
+        {
+            yield return Message(message, "", true);
+        }
+        
+        public IEnumerator Message(string message, bool isWait = true)
+        {
+            yield return Message(message, "", isWait);
+        }
+        
+        public IEnumerator Message(string message, string name = "", bool isWait=true)
+        {
+            // 名前エリア
+            if (textName != null) {
+                textName.text = name;
+                cvgpName.alpha = (string.IsNullOrEmpty(name)) ? 0 : 1;
+            }
+
+            // メッセージエリア
+            SetMessageText(string.Empty);
+            this.strMessage = message;
+            topMessage = 0;
+            idxMessage = 0;
+            cntMessage = message.Length;
+            waitMessage = 0.0f;
+            lastChar = ' ';
+
+            if (isWait) {
+                yield return WaitTouch();
+            }
+
+            yield return null;
+        }
         
         public void ForceClose()
         {
@@ -109,7 +146,11 @@ namespace App
         {
             SetMessageText("");
         }
+        
+        #endregion
 
+        #region Telop
+        
         public IEnumerator OpenTelop(string message, float time=ConstDef.FADETIME)
         {
             imgTelop.color = colBlackAlpha0;
@@ -130,6 +171,35 @@ namespace App
             textMessage.text = "";
             yield return null;
         }
+        
+        #endregion
+        
+        #region Select
+
+        public IEnumerator Select(params string[] args)
+        {
+            float itemHeight = SELECTITEM_HEIGHT * (float)args.Length * 0.5f;
+            
+            foreach (var it in args) {
+                var item = SelectControll.Instance.AddItem(it);
+                item.gameObject.transform.localPosition = new Vector3(0, itemHeight, 0);
+                itemHeight -= SELECTITEM_HEIGHT;
+            }
+
+            while (SelectControll.Instance.IsEndOfSelected() == false) {
+                yield return null;
+            }
+            
+            SelectControll.Instance.Close();
+            yield return null;
+        }
+        
+        public int SelectResult()
+        {
+            return SelectControll.Instance.Result;
+        }
+        
+        #endregion
         
         public IEnumerator WaitTouch()
         {
@@ -219,26 +289,6 @@ namespace App
             {
                 SetMessageText(this.strMessage.Substring(topMessage, idxMessage + 1));
             }
-        }
-
-        public IEnumerator Message(string message, string name = "")
-        {
-            // 名前エリア
-            if (textName != null) {
-                textName.text = name;
-                cvgpName.alpha = (string.IsNullOrEmpty(name)) ? 0 : 1;
-            }
-
-            // メッセージエリア
-            SetMessageText(string.Empty);
-            this.strMessage = message;
-            topMessage = 0;
-            idxMessage = 0;
-            cntMessage = message.Length;
-            waitMessage = 0.0f;
-            lastChar = ' ';
-
-            yield return WaitTouch();
         }
 
         public void SetFaceImage(Sprite faceSprite, bool flipX = false)

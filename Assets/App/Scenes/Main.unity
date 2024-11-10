@@ -355,6 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 340050992}
   - component: {fileID: 340050993}
+  - component: {fileID: 340050994}
   m_Layer: 0
   m_Name: MessageSystem
   m_TagString: Untagged
@@ -394,13 +395,26 @@ MonoBehaviour:
   cvgpMessageWithFace: {fileID: 465208932}
   cvgpMessage: {fileID: 465208932}
   textAreaWithFace: {fileID: 1283522257}
-  textAreaLog: {fileID: 0}
   imgFace: {fileID: 0}
-  interpalTimeLog: 0.5
   cgTelop: {fileID: 1468813988}
   textMessage: {fileID: 1381119633}
   imgTelop: {fileID: 1468813986}
-  Message: 
+--- !u!114 &340050994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340050991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d3f758271674395aae84feedaa59c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSE: 0
+  centerGui: {fileID: 776154906}
+  imageSelect: {fileID: 2277320557272331636, guid: 77913ca040e504421b2d1b08dd0bd245, type: 3}
+  scrollbar: {fileID: 0}
 --- !u!1 &399165172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,7 +1950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a123bfa4570468cba5e6c278295a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamePhase: 0
 --- !u!114 &1695375256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2828,10 +2841,6 @@ PrefabInstance:
     - target: {fileID: 4814490129813894819, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_Name
       value: MessageWindow
-      objectReference: {fileID: 0}
-    - target: {fileID: 4814490129813894819, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6077972132035806923, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_Pivot.x

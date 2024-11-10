@@ -9,8 +9,8 @@ namespace App
     {
         [SerializeField] private SoundList.SE clickSE = SoundList.SE.NONE;
         [SerializeField] public RectTransform centerGui;
-        [SerializeField] public UnityEngine.UI.Image imageSelect;
-        [SerializeField] private UnityEngine.UI.Scrollbar scrollbar = null;
+        [SerializeField] public Image imageSelect;
+        [SerializeField] private Scrollbar scrollbar = null;
 
         private List<SelectItem> list = new List<SelectItem>();
         private bool hasBegun = false;
@@ -32,12 +32,12 @@ namespace App
             }
         }
 
-        public void AddItem(string text, Sprite sprIcon = null)
+        public SelectItem AddItem(string text, Sprite sprIcon = null)
         {
-            var obj = GameObject.Instantiate(imageSelect, centerGui);
-            obj.gameObject.SetActive(true);
+            var objItem = GameObject.Instantiate(imageSelect, centerGui);
+            objItem.gameObject.SetActive(true);
 
-            var item = obj.GetComponent<SelectItem>();
+            var item = objItem.GetComponent<SelectItem>();
             item.SetText(text, sprIcon);
             item.selectNo = list.Count;
             // List
@@ -52,6 +52,8 @@ namespace App
                 scrollbar.value = 0;
                 _timer_btmScroll = 1f;
             }
+
+            return item;
         }
 
         public bool IsExceptSelection()
@@ -73,9 +75,9 @@ namespace App
         {
             isSelected = true;
             result = item.selectNo;
-
-            // SE
-            App.SoundManager.Instance.PlaySE(clickSE);
+            //
+            // // SE
+            // App.SoundManager.Instance.PlaySE(clickSE);
         }
 
         public void Close()
