@@ -5,7 +5,7 @@
 			<value>Meet-Friend</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{fc626eea-1abf-4c3d-a5d3-41d2e0f69fda}</destination>
@@ -116,7 +116,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{12e8f4ce-11a4-4c83-bbca-151bf2265e7d}" />
-	<object class="SingleSound" id="{d6bca963-1885-4267-b3bf-c5fcd11c943e}" />
+	<object class="SingleSound" id="{d6bca963-1885-4267-b3bf-c5fcd11c943e}">
+		<relationship name="audioFile">
+			<destination>{22bff391-4d07-412a-bb0a-db2620abd7b9}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{b5d1b3a8-ba6d-4b78-9a05-f2d1a0126577}" />
 	<object class="MixerBusFader" id="{5fb208ee-4cd7-4f6b-8a00-5751cd4652ad}" />
 </objects>
