@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace App
 {
-    public enum eWinMsg
-    {
-        Message,
-        Log,
-    }
-
     public class MessageControll : Singleton<MessageControll>
     {
         [SerializeField] private TMP_Text textName;
@@ -19,9 +15,7 @@ namespace App
         [SerializeField] private CanvasGroup cvgpMessageWithFace;
         [SerializeField] private CanvasGroup cvgpMessage;
         [SerializeField] private TMP_Text textAreaWithFace;
-        [SerializeField] private TMP_Text textAreaLog;
         [SerializeField] private UnityEngine.UI.Image imgFace;
-        [SerializeField] private float interpalTimeLog = 0.5f;
 
         [SerializeField] private CanvasGroup cgTelop = null;
         [SerializeField] private TMP_Text textMessage = null;
@@ -30,13 +24,11 @@ namespace App
         static Color colWhiteAlpha0 = new Color(1, 1, 1, 1);
         static Color colBlackAlpha0 = new Color(0, 0, 0, 1);
         private const float fadeTime = ConstDef.FADETIME;
-
-        private Queue<string> logQueue = new Queue<string>();
-
+        
         private const char KEYSTOP_CODE0 = '@';
         private const char KEYSTOP_CODE1 = '＠';
 
-        public string Message;
+        string strMessage;
         private float timeCharDisplay = 0.1f;
 
         private int topMessage;
@@ -44,10 +36,7 @@ namespace App
         private int cntMessage;
         private float waitMessage;
         private char lastChar;
-
-        private bool is_log_message = false;
-        private float timeLog = 0;
-
+        
         private Color colZero = new Color(0, 0, 0, 0);
 
         public UnityEngine.UI.Image ImageFace
@@ -64,51 +53,48 @@ namespace App
         void Awake()
         {
             // Initialize
-            // Debug.Assert(textName != null);
-            // Debug.Assert(cvgpName != null);
-            Debug.Assert(textAreaLog != null);
             Debug.Assert(textAreaWithFace != null);
             Debug.Assert(cvgpMessage != null);
-            // Debug.Assert(cvgpMessageWithFace != null);
 
-            SetSwitchWindow(eWinMsg.Message);
-            SetMessage(string.Empty);
+            cvgpMessage.alpha = 0;
+            cvgpMessageWithFace.alpha = 1;
+            SetMessageText(string.Empty);
         }
 
-        public IEnumerator YieldOpen()
+        IEnumerator YieldFadeAlpha(float srcVal, float dstVal, float time, CanvasGroup target, UnityAction funcEnd)
         {
-            cvgpMessageWithFace.alpha = 0;
-            cvgpMessageWithFace.gameObject.SetActive(true);
-            float _time = 0;
-            while (_time < fadeTime)
-            {
-                _time += Time.deltaTime;
-                if (_time >= fadeTime)
-                {
-                    _time = fadeTime;
+            if (time > 0) {
+                float _time = 0;
+                while (_time < time) {
+                    _time += Time.deltaTime;
+                    if (_time >= time) {
+                        _time = time;
+                        if (funcEnd != null) {
+                            funcEnd.Invoke();
+                        }
+                    }
+
+                    target.alpha = Mathf.Lerp(srcVal, dstVal, _time / time);
+                    yield return null;
                 }
-                cvgpMessageWithFace.alpha = Mathf.Lerp(0, 1, _time / fadeTime);
-                yield return null;
             }
+            else {
+                target.alpha = dstVal;
+            }
+
             yield return null;
         }
 
-        public IEnumerator YieldClose()
+        public IEnumerator OpenMessage()
         {
-            float _time = 0;
-            while (_time < fadeTime)
-            {
-                _time += Time.deltaTime;
-                if (_time >= fadeTime)
-                {
-                    _time = fadeTime;
-                }
-                else
-                {
-                    cvgpMessageWithFace.alpha = Mathf.Lerp(1, 0, _time / fadeTime);
-                }
-                yield return null;
-            }
+            cvgpMessageWithFace.alpha = 0;
+            cvgpMessageWithFace.gameObject.SetActive(true);
+            yield return YieldFadeAlpha(0, 1, fadeTime, cvgpMessageWithFace, () => { });
+        }
+
+        public IEnumerator CloseMessage()
+        {
+            yield return YieldFadeAlpha(1, 0, fadeTime, cvgpMessageWithFace, () => { });
             ForceClose();
             yield return null;
         }
@@ -121,53 +107,31 @@ namespace App
 
         public void ClearMessage()
         {
-            SetMessage("");
+            SetMessageText("");
         }
 
-        public IEnumerator YieldOpenTelop(string message)
+        public IEnumerator OpenTelop(string message, float timeFade=ConstDef.FADETIME)
         {
-            cgTelop.alpha = 0;
             imgTelop.color = colBlackAlpha0;
             textMessage.color = Color.white;
             textMessage.text = message;
             cgTelop.gameObject.SetActive(true);
-            float _time = 0;
-            while (_time < fadeTime)
-            {
-                _time += Time.deltaTime;
-                if (_time >= fadeTime)
-                {
-                    _time = fadeTime;
-                }
-                cgTelop.alpha = Mathf.Lerp(0, 1, _time / fadeTime);
-                yield return null;
-            }
-            yield return null;
+            yield return YieldFadeAlpha(0, 1, fadeTime, cgTelop, () => { });
         }
 
-        public IEnumerator YieldCloseTelop()
+        public IEnumerator CloseTelop()
         {
             cgTelop.alpha = 1;
             imgTelop.color = colBlackAlpha0;
             textMessage.color = Color.white;
             this.gameObject.SetActive(true);
-            float _time = 0;
-            while (_time < fadeTime)
-            {
-                _time += Time.deltaTime;
-                if (_time >= fadeTime)
-                {
-                    _time = fadeTime;
-                }
-                cgTelop.alpha = Mathf.Lerp(1, 0, _time / fadeTime);
-                yield return null;
-            }
+            yield return YieldFadeAlpha(1, 0, fadeTime, cgTelop, () => { });
             cgTelop.gameObject.SetActive(false);
             textMessage.text = "";
             yield return null;
         }
         
-        public IEnumerator YieldWaitTouch()
+        public IEnumerator WaitTouch()
         {
             GameMain.Instance.TouchRequest();
             while (GameMain.Instance.IsTouched() == false)
@@ -177,64 +141,17 @@ namespace App
             GameMain.Instance.DestoryTouchIcon();
         }
         
-        public void LogMessage(string log)
-        {
-            SetFaceImage(null);
-            logQueue.Enqueue(log);
-        }
-
-        public void SetSwitchWindow(eWinMsg type)
-        {
-            if (cvgpName == null || cvgpMessageWithFace == null) return;
-            
-            is_log_message = type == eWinMsg.Log;
-            if (is_log_message)
-            {
-                cvgpName.alpha = 0;
-                // logMessage = string.Empty;
-                cvgpMessage.alpha = 1;
-                cvgpMessageWithFace.alpha = 0;
-            }
-            else
-            {
-                cvgpMessage.alpha = 0;
-                cvgpMessageWithFace.alpha = 1;
-            }
-        }
-
         void SetMessageText(string message)
         {
-            if (is_log_message)
-            {
-                // textAreaLog.text = message;
-            }
-            else
-            {
-                textAreaWithFace.text = message;
-            }
+            textAreaWithFace.text = message;
         }
 
         // Update is called once per frame
         void Update()
         {
-            UpdateLogControl();
             UpdateMessageControll();
         }
-
-        void UpdateLogControl()
-        {
-            if (logQueue.Count > 0 && IsEndOfMessage == true)
-            {
-                timeLog += Time.deltaTime;
-                if (timeLog >= interpalTimeLog)
-                {
-                    timeLog = 0;
-                    SetSwitchWindow(eWinMsg.Log);
-                    textAreaLog.text = logQueue.Dequeue();
-                }
-            }
-        }
-
+        
         void UpdateMessageControll()
         {
             if (IsEndOfMessage == false)
@@ -268,9 +185,9 @@ namespace App
                         {
                             // 次の改行または文の終了まで
                             while ((topMessage + idxMessage + 1) < cntMessage
-                                   && this.Message[topMessage + idxMessage + 1] != '\n'
-                                   && this.Message[topMessage + idxMessage + 1] != KEYSTOP_CODE0
-                                   && this.Message[topMessage + idxMessage + 1] != KEYSTOP_CODE1)
+                                   && this.strMessage[topMessage + idxMessage + 1] != '\n'
+                                   && this.strMessage[topMessage + idxMessage + 1] != KEYSTOP_CODE0
+                                   && this.strMessage[topMessage + idxMessage + 1] != KEYSTOP_CODE1)
                             {
                                 idxMessage++;
                             }
@@ -297,20 +214,14 @@ namespace App
 
         void UpdateMessage()
         {
-            lastChar = this.Message[topMessage + idxMessage];
+            lastChar = this.strMessage[topMessage + idxMessage];
             if (lastChar != KEYSTOP_CODE0 && lastChar != KEYSTOP_CODE1)
             {
-                SetMessageText(this.Message.Substring(topMessage, idxMessage + 1));
+                SetMessageText(this.strMessage.Substring(topMessage, idxMessage + 1));
             }
         }
 
-        public void SetMessage(string message, string name = "")
-        {
-            SetSwitchWindow(eWinMsg.Message);
-            SetMessageContent(message, name);
-        }
-
-        public void SetMessageContent(string message, string name = "")
+        public IEnumerator Message(string message, string name = "")
         {
             // 名前エリア
             if (textName != null) {
@@ -320,13 +231,14 @@ namespace App
 
             // メッセージエリア
             SetMessageText(string.Empty);
-            this.Message = message;
-
+            this.strMessage = message;
             topMessage = 0;
             idxMessage = 0;
             cntMessage = message.Length;
             waitMessage = 0.0f;
             lastChar = ' ';
+
+            yield return WaitTouch();
         }
 
         public void SetFaceImage(Sprite faceSprite, bool flipX = false)

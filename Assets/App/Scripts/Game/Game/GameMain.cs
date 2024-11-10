@@ -7,20 +7,8 @@ using UnityEngine.SceneManagement;
 
 namespace App
 {
-    public enum GamePhase                                                                                            
-    {
-        NONE,
-        TITLE,
-        GAME,
-        ENDING,
-        //
-        MAX,
-    }
-
     public class GameMain : SingletonDontDestroy<GameMain>
     {
-        public GamePhase gamePhase;
-
         public void InitializeGame()
         {
             // Fader
@@ -44,6 +32,7 @@ namespace App
         void Start ()
         {
             InitializeGame();
+            hasPressed = false;
         }
 
         // Update is called once per frame
@@ -61,9 +50,21 @@ namespace App
             
         }
 
+        private bool hasPressed = false;
         public bool IsTouched()
         {
-            return Input.GetMouseButton(0) || Input.touchCount > 0;
+            bool ret = false;
+            if (hasPressed == false) {
+                ret = Input.GetMouseButton(0) || Input.touchCount > 0;
+                hasPressed = ret;
+            }
+            else {
+                if (Input.GetMouseButton(0) == false && Input.touchCount <= 0) {
+                    hasPressed = false;
+                }
+            }
+
+            return ret;
         }
     }
 }
