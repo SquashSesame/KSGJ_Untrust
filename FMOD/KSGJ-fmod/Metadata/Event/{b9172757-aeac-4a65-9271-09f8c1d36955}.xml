@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{b9172757-aeac-4a65-9271-09f8c1d36955}">
 		<property name="name">
-			<value>Phone-Close</value>
+			<value>Back</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -85,8 +85,6 @@
 	<object class="MultiSound" id="{4dba3409-2247-4284-ae24-b3d6b55d120c}">
 		<relationship name="sounds">
 			<destination>{ad83e205-75c4-47ca-bdf2-d2a4ae5d799f}</destination>
-			<destination>{258b2e67-ef5c-4286-9373-6e45bafdfee4}</destination>
-			<destination>{22c34bcd-7141-4d63-bb09-2c6800339a36}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{5f5aa71a-9198-4177-9351-3ffd3430aeb3}">
@@ -104,22 +102,6 @@
 	<object class="SingleSound" id="{ad83e205-75c4-47ca-bdf2-d2a4ae5d799f}">
 		<relationship name="audioFile">
 			<destination>{5e8c7f1e-7a78-4e6f-87a1-ea6b17364f15}</destination>
-		</relationship>
-	</object>
-	<object class="CommandSound" id="{258b2e67-ef5c-4286-9373-6e45bafdfee4}">
-		<property name="commandType">
-			<value>1</value>
-		</property>
-		<relationship name="commandTarget">
-			<destination>{ff62868f-7b61-4599-9d02-c6e10ceadcd6}</destination>
-		</relationship>
-	</object>
-	<object class="CommandSound" id="{22c34bcd-7141-4d63-bb09-2c6800339a36}">
-		<property name="commandType">
-			<value>3</value>
-		</property>
-		<relationship name="commandTarget">
-			<destination>{5bf22156-dda9-4805-b7c2-a0e6690bd35c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{bc79d56d-53cb-49cd-8cbf-228d7e55afa7}" />
