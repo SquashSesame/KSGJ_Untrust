@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{c1890174-8ae9-49f8-b49b-b116557b40f4}">
+		<property name="assetPath">
+			<value>Oimachi Excelsior Cafe120 by markystar Id-42194 1.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>32.940022675736962</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2b81ffa2-f1da-4b54-843c-a5ab9c648029}</destination>
+		</relationship>
+	</object>
+</objects>
