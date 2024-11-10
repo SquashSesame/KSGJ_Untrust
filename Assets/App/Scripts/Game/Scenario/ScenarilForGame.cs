@@ -39,9 +39,12 @@ namespace App
             yield return Window.YieldCloseTelop();
 
             yield return Window.YieldOpen();
-            Window.SetMessage("ここは多くの噂が集まるバー@");
+            Window.SetMessage("ここは多くの噂が集まるバー@¥n/" +
+                              "どんな人間が集まり・・・@");
+            
             yield return Window.YieldWaitTouch();
-            Window.SetMessage("噂話を聞いてみよう@");
+            Window.SetMessage("どんな噂をしているのか？@¥n" +
+                              "噂話を聞いてみよう@");
             yield return Window.YieldWaitTouch();
             
             yield return Window.YieldClose();

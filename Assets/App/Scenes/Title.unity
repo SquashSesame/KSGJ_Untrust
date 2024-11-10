@@ -543,7 +543,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 23
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1382,6 +1382,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnStart: {fileID: 1061032625}
+--- !u!4 &941885471 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 678780676368491760, guid: a87281b4f7c254c4db62f72703c845d3, type: 3}
+  m_PrefabInstance: {fileID: 7704472441386005451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &953584067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,7 +1771,7 @@ RectTransform:
   m_Children:
   - {fileID: 1061032624}
   - {fileID: 19012524}
-  - {fileID: 1328272747}
+  - {fileID: 941885471}
   m_Father: {fileID: 2118063509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1853,11 +1858,6 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
---- !u!4 &1328272747 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1701742640579208185, guid: a87281b4f7c254c4db62f72703c845d3, type: 3}
-  m_PrefabInstance: {fileID: 7704472441386005451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1388835661
 GameObject:
   m_ObjectHideFlags: 0

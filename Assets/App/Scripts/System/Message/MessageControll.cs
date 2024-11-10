@@ -37,7 +37,7 @@ namespace App
         private const char KEYSTOP_CODE1 = '＠';
 
         public string Message;
-        public float timeCharDisplay = 1.0f;
+        private float timeCharDisplay = 0.1f;
 
         private int topMessage;
         private int idxMessage;
@@ -83,9 +83,9 @@ namespace App
             while (_time < fadeTime)
             {
                 _time += Time.deltaTime;
-                if (_time > 0)
+                if (_time >= fadeTime)
                 {
-                    _time = 0;
+                    _time = fadeTime;
                 }
                 cvgpMessageWithFace.alpha = Mathf.Lerp(0, 1, _time / fadeTime);
                 yield return null;
