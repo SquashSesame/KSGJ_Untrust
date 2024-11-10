@@ -23,7 +23,7 @@ namespace App
 
         static Color colWhiteAlpha0 = new Color(1, 1, 1, 1);
         static Color colBlackAlpha0 = new Color(0, 0, 0, 1);
-        private const float fadeTime = ConstDef.FADETIME;
+        private const float defFadeTime = ConstDef.FADETIME;
         
         private const char KEYSTOP_CODE0 = '@';
         private const char KEYSTOP_CODE1 = '＠';
@@ -89,12 +89,12 @@ namespace App
         {
             cvgpMessageWithFace.alpha = 0;
             cvgpMessageWithFace.gameObject.SetActive(true);
-            yield return YieldFadeAlpha(0, 1, fadeTime, cvgpMessageWithFace, () => { });
+            yield return YieldFadeAlpha(0, 1, defFadeTime, cvgpMessageWithFace, () => { });
         }
 
         public IEnumerator CloseMessage()
         {
-            yield return YieldFadeAlpha(1, 0, fadeTime, cvgpMessageWithFace, () => { });
+            yield return YieldFadeAlpha(1, 0, defFadeTime, cvgpMessageWithFace, () => { });
             ForceClose();
             yield return null;
         }
@@ -110,13 +110,13 @@ namespace App
             SetMessageText("");
         }
 
-        public IEnumerator OpenTelop(string message, float timeFade=ConstDef.FADETIME)
+        public IEnumerator OpenTelop(string message, float time=ConstDef.FADETIME)
         {
             imgTelop.color = colBlackAlpha0;
             textMessage.color = Color.white;
             textMessage.text = message;
             cgTelop.gameObject.SetActive(true);
-            yield return YieldFadeAlpha(0, 1, fadeTime, cgTelop, () => { });
+            yield return YieldFadeAlpha(0, 1, time, cgTelop, () => { });
         }
 
         public IEnumerator CloseTelop()
@@ -125,7 +125,7 @@ namespace App
             imgTelop.color = colBlackAlpha0;
             textMessage.color = Color.white;
             this.gameObject.SetActive(true);
-            yield return YieldFadeAlpha(1, 0, fadeTime, cgTelop, () => { });
+            yield return YieldFadeAlpha(1, 0, defFadeTime, cgTelop, () => { });
             cgTelop.gameObject.SetActive(false);
             textMessage.text = "";
             yield return null;
