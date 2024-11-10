@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{ec5982fc-a80d-439a-a5ab-139738ae167b}">
+		<property name="assetPath">
+			<value>Designed, Braam, Orchestral Impact, Huge, Epic 01 SND58575.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>8.499635416666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2b81ffa2-f1da-4b54-843c-a5ab9c648029}</destination>
+		</relationship>
+	</object>
+</objects>

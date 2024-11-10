@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{090d44b4-6183-4c72-858d-3c1e2a62a27e}">
+		<property name="assetPath">
+			<value>Ambience, Urban, City, Street, Tram Passing, Walla SND1248.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>20.094791666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2b81ffa2-f1da-4b54-843c-a5ab9c648029}</destination>
+		</relationship>
+	</object>
+</objects>

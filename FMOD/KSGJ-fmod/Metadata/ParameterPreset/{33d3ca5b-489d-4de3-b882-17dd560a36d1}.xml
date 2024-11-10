@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{33d3ca5b-489d-4de3-b882-17dd560a36d1}">
+		<property name="name">
+			<value>PhoneTime</value>
+		</property>
+		<relationship name="folder">
+			<destination>{32ad42a6-2d80-4328-8372-5c2fd66fc6bc}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{5bf22156-dda9-4805-b7c2-a0e6690bd35c}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{5bf22156-dda9-4805-b7c2-a0e6690bd35c}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{978ccaa7-6e7d-4aa4-a776-99cb104025b2}</destination>
+		</relationship>
+	</object>
+	<object class="SeekModulator" id="{978ccaa7-6e7d-4aa4-a776-99cb104025b2}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>cursorPosition</value>
+		</property>
+		<property name="speedAscending">
+			<value>0.05000000074505806</value>
+		</property>
+		<property name="asymmetric">
+			<value>true</value>
+		</property>
+	</object>
+</objects>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="Snapshot" id="{ff62868f-7b61-4599-9d02-c6e10ceadcd6}">
+		<property name="name">
+			<value>PhoneMode</value>
+		</property>
+		<relationship name="mixer">
+			<destination>{a229dc29-dd3b-466a-a4cc-f9dfe2678c50}</destination>
+		</relationship>
+		<relationship name="automatableProperties">
+			<destination>{9a6a6e2c-c992-46e9-8b85-1421a8b63e76}</destination>
+		</relationship>
+		<relationship name="markerTracks">
+			<destination>{1a7a1829-8d6e-4090-89f7-07ba750cb124}</destination>
+		</relationship>
+		<relationship name="timeline">
+			<destination>{06d36d25-2a98-4f86-b45f-ff6bf962134d}</destination>
+		</relationship>
+		<relationship name="snapshotMasterTrack">
+			<destination>{6da3940d-a1d3-4314-9a3c-586d7f3fe06f}</destination>
+		</relationship>
+	</object>
+	<object class="EventAutomatableProperties" id="{9a6a6e2c-c992-46e9-8b85-1421a8b63e76}" />
+	<object class="MarkerTrack" id="{1a7a1829-8d6e-4090-89f7-07ba750cb124}" />
+	<object class="Timeline" id="{06d36d25-2a98-4f86-b45f-ff6bf962134d}" />
+	<object class="SnapshotMasterTrack" id="{6da3940d-a1d3-4314-9a3c-586d7f3fe06f}" />
+</objects>
