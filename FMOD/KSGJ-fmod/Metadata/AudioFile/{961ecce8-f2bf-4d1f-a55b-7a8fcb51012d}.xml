@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{961ecce8-f2bf-4d1f-a55b-7a8fcb51012d}">
+		<property name="assetPath">
+			<value>Ambience, Restaurant &amp; Bar, Quiet Cafe, Interior, Medium Walla, Workers, Quiet Hum, São Luís, Brazil 01 (Double ORTF) SND108430.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>19.796781249999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2b81ffa2-f1da-4b54-843c-a5ab9c648029}</destination>
+		</relationship>
+	</object>
+</objects>
