@@ -28,30 +28,27 @@ namespace App
 
         IEnumerator Scenario_Prologue()
         {
-            Fader.SetFadeLevel(1);
+            Fader.SetFadeColor(Color.black);
+            Fader.SetFadeLevel(1.0f);
             Window.ClearMessage();
             Window.ForceClose();
 
+            yield return Window.OpenTelop("これは真実かどうかを見極めるゲームである", 0);
             yield return Fader.YieldFadeIn(ConstDef.FADETIME);
-            
-            yield return Window.YieldOpenTelop("これは真実かどうかを見極めるゲームである");
-            yield return Window.YieldWaitTouch();
-            yield return Window.YieldCloseTelop();
+            yield return Window.WaitTouch();
+            yield return Window.CloseTelop();
 
-            yield return Window.YieldOpen();
-            Window.SetMessage("ここは多くの噂が集まるバー@¥n/" +
-                              "どんな人間が集まり・・・@");
-            
-            yield return Window.YieldWaitTouch();
-            Window.SetMessage("どんな噂をしているのか？@¥n" +
-                              "噂話を聞いてみよう@");
-            yield return Window.YieldWaitTouch();
-            
-            yield return Window.YieldClose();
+            yield return Window.OpenMessage();
+            yield return Window.Message("Hi, how are you?");
+            yield return Window.Message("How’s it going?");
+            yield return Window.Message("We haven’t seen each other in a while.");
+            yield return Window.Message("What have you been up to?");
+            yield return Window.Message("I need to tell you something");
+            yield return Window.CloseMessage();
             
             Window.ClearMessage();
 
-            // yield return Window.Select("絶対リベンジしてやろう！", "幸運をいのってるよ、ローラ！");
+            // yield return Window.Select("絶対リベンジしてやろう！", "幸運をい");
             // switch (Easy.SelectResult()) {
             //     case 0:
             //         yield return Easy.Message(eHumans.Player, eEmotion.HAPPY, "絶対リベンジしてやろう！");
@@ -63,20 +60,7 @@ namespace App
             // }
             //
             // yield return Easy.Message(eHumans.Laura, eEmotion.HAPPY, "ええ！");
-            //
             // yield return Easy.YieldClearMessage();
-            //
-            //
-            // yield return TelopWindow.Instance.YieldOpen("そして、１年後");
-            // yield return TelopWindow.Instance.YieldWaitTouch();
-            // yield return TelopWindow.Instance.YieldClose();
-            //
-            //
-            // yield return Easy.Message(eHumans.Player, eEmotion.IDLE, "あれから一年…");
-            // //yield return Easy.Message(eHumans.Player, eEmotion.IDLE, "武者修行を続けたんだ");
-            // yield return Easy.Message(eHumans.Player, eEmotion.HAPPY, "今ならあのダンジョンにだって負けやしない!");
-            // yield return Easy.Message(eHumans.Player, eEmotion.IDLE, "まず、ローラと合流しなきゃな");
-            // yield return Easy.Message(eHumans.Player, eEmotion.IDLE, "ちゃんとこの町に来ているだろうか…");
 
 
             yield return Fader.YieldFadeOut(ConstDef.FADETIME);

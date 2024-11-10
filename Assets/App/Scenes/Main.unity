@@ -1042,6 +1042,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sprite-phone
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: f1e4bbca1807345ad941d576c7eab8d0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8938bd968e40d4264b8424e0a4ba0a8e, type: 2}
     - target: {fileID: 7878350319992209165, guid: f1e4bbca1807345ad941d576c7eab8d0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
