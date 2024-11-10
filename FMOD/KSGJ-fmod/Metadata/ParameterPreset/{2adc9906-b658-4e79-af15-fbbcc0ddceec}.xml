@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{2adc9906-b658-4e79-af15-fbbcc0ddceec}">
+		<property name="name">
+			<value>AmbInOut</value>
+		</property>
+		<relationship name="folder">
+			<destination>{32ad42a6-2d80-4328-8372-5c2fd66fc6bc}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{6cedc795-6524-486d-a3dd-92c6233d7f37}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{6cedc795-6524-486d-a3dd-92c6233d7f37}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
