@@ -46,22 +46,25 @@ namespace App
             yield return Window.Message("I need to tell you something");
             yield return Window.CloseMessage();
             
-            Window.ClearMessage();
+            yield return Window.OpenMessage();
+            yield return Window.Message("Which one do you like?", false);
+            yield return Window.Select("Apple", "Google", "Amazon");
+            switch (Window.SelectResult()) {
+                case 0:
+                    yield return Window.Message("I like an Apple!!");
+                    break;
+            
+                case 1:
+                    yield return Window.Message("I like a Google!!");
+                    break;
 
-            // yield return Window.Select("絶対リベンジしてやろう！", "幸運をい");
-            // switch (Easy.SelectResult()) {
-            //     case 0:
-            //         yield return Easy.Message(eHumans.Player, eEmotion.HAPPY, "絶対リベンジしてやろう！");
-            //         break;
-            //
-            //     case 1:
-            //         yield return Easy.Message(eHumans.Player, eEmotion.HAPPY, "幸運をいのってるよ、ローラ！");
-            //         break;
-            // }
-            //
-            // yield return Easy.Message(eHumans.Laura, eEmotion.HAPPY, "ええ！");
-            // yield return Easy.YieldClearMessage();
+                case 2:
+                    yield return Window.Message("I like an Amazon!!");
+                    break;
+            }
 
+            yield return Window.Message("I need a lot of money!!");
+            yield return Window.CloseMessage();
 
             yield return Fader.YieldFadeOut(ConstDef.FADETIME);
             

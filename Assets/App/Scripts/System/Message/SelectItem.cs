@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace App
 {
@@ -10,7 +11,7 @@ namespace App
     {
         [SerializeField] private float closeTime = 0.2f;
         [SerializeField] public int selectNo;
-        [SerializeField] public TMP_Text text;
+        [SerializeField] public TMP_Text textItem;
         [SerializeField] UnityEngine.UI.Image imgIcon = null;
 
         UnityEngine.UI.Button button = null;
@@ -18,10 +19,8 @@ namespace App
         // Use this for initialization
         void Start()
         {
-            // Debug.Assert(controll != null);
-            Debug.Assert(text != null);
-            Debug.Assert(imgIcon != null);
-            // animItem = GetComponent<Animator>();
+            Debug.Assert(textItem != null);
+
             button = GetComponent<UnityEngine.UI.Button>();
             Debug.Assert(button != null);
 
@@ -29,10 +28,10 @@ namespace App
             {
                 OnSelected();
             });
-
-            //transform.localScale = Vector3.zero;
-            //transform.DOScale(Vector3.one, closeTime)
-            //    .SetEase(Ease.InQuart);
+            transform.localScale = new Vector3(0, 1, 1);
+            // Animation
+            transform.DOScaleX(1, closeTime)
+                .SetEase(Ease.InQuart);
         }
 
         public void OnSelected()
@@ -42,7 +41,6 @@ namespace App
 
         public void Close()
         {
-            // 自動で削除される
             transform.DOScaleY(0, closeTime)
                 .SetEase(Ease.InQuart)
                 .OnComplete(() =>
@@ -53,19 +51,19 @@ namespace App
 
         public void SetText(string msg, Sprite sprIcon = null)
         {
-            if (text != null)
+            if (textItem != null)
             {
-                text.text = msg;
+                textItem.text = msg;
             }
 
-            if (sprIcon != null)
-            {
-                imgIcon.enabled = true;
-                imgIcon.sprite = sprIcon;
-            }
-            else
-            {
-                imgIcon.enabled = false;
+            if (imgIcon != null) {
+                if (sprIcon != null) {
+                    imgIcon.enabled = true;
+                    imgIcon.sprite = sprIcon;
+                }
+                else {
+                    imgIcon.enabled = false;
+                }
             }
         }
     }
