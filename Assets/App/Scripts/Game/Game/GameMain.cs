@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace App
 {
@@ -25,10 +26,15 @@ namespace App
             // Fader
             Fader.SetFadeColor(Color.black);
             Fader.SetFadeLevel(1.0f);
+            Fader.FadeIn(ConstDef.FADETIME);
         }
 
         public void StartGame()
         {
+            Fader.FadeOut(ConstDef.FADETIME, Fader.Layer.MAIN, () => {
+                SceneManager.LoadScene("Main");
+                Fader.FadeIn(ConstDef.FADETIME);
+            });
         }
         
         public void EndGame()
@@ -37,6 +43,7 @@ namespace App
 
         void Start ()
         {
+            InitializeGame();
         }
 
         // Update is called once per frame
