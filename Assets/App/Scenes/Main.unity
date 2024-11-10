@@ -394,13 +394,10 @@ MonoBehaviour:
   cvgpMessageWithFace: {fileID: 465208932}
   cvgpMessage: {fileID: 465208932}
   textAreaWithFace: {fileID: 1283522257}
-  textAreaLog: {fileID: 0}
   imgFace: {fileID: 0}
-  interpalTimeLog: 0.5
   cgTelop: {fileID: 1468813988}
   textMessage: {fileID: 1381119633}
   imgTelop: {fileID: 1468813986}
-  Message: 
 --- !u!1 &399165172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,7 +1933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a123bfa4570468cba5e6c278295a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamePhase: 0
 --- !u!114 &1695375256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2926,6 +2922,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1801057395}
     m_Modifications:
+    - target: {fileID: 334120469157845874, guid: d866e265ef8af4fe49809643e5b23db4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 334120469157845874, guid: d866e265ef8af4fe49809643e5b23db4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 334120469157845874, guid: d866e265ef8af4fe49809643e5b23db4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 334120469157845874, guid: d866e265ef8af4fe49809643e5b23db4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
