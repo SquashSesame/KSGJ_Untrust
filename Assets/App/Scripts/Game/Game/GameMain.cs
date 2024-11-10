@@ -7,8 +7,20 @@ using UnityEngine.SceneManagement;
 
 namespace App
 {
+    public enum GamePhase                                                                                            
+    {
+        NONE,
+        TITLE,
+        GAME,
+        ENDING,
+        //
+        MAX,
+    }
+
     public class GameMain : SingletonDontDestroy<GameMain>
     {
+        public GamePhase gamePhase;
+
         public void InitializeGame()
         {
             // Fader
