@@ -126,11 +126,7 @@
 			<destination>{f146198b-1e17-4f14-b41e-f5089c9f37c2}</destination>
 		</relationship>
 	</object>
-	<object class="CommandSound" id="{1514702c-7602-4f0e-bfb3-8b75156c1ed2}">
-		<relationship name="commandTarget">
-			<destination>{ea62a1b3-1461-414b-bcdc-6f81fef5862d}</destination>
-		</relationship>
-	</object>
+	<object class="CommandSound" id="{1514702c-7602-4f0e-bfb3-8b75156c1ed2}" />
 	<object class="MixerBusFader" id="{c3df011c-4be8-4454-a403-11e687924840}" />
 	<object class="MixerBusFader" id="{0634f17d-0d39-411c-98d6-28253da10ce4}" />
 </objects>
