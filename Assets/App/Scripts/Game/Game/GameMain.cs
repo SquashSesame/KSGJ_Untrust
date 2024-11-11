@@ -80,12 +80,15 @@ namespace App
                  
                 if (ret) {
                     // スマートフォンボタンのときは無視する
-                    var rectTrans = smartphone.Instance.GetComponent<RectTransform>();
-                    Vector2 localPoint = new Vector2();
-                    RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTrans, touchPoint, GetComponent<Camera>(), out localPoint);
-                    if (rectTrans.rect.Contains(localPoint)) {
-                        ret = false;
-                        hasPressed = false;
+                    if (smartphone.Instance != null) {
+                        var rectTrans = smartphone.Instance.GetComponent<RectTransform>();
+                        Vector2 localPoint = new Vector2();
+                        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTrans, touchPoint,
+                            GetComponent<Camera>(), out localPoint);
+                        if (rectTrans.rect.Contains(localPoint)) {
+                            ret = false;
+                            hasPressed = false;
+                        }
                     }
                 }
             }

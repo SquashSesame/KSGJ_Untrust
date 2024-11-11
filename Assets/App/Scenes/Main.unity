@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814490129813894819, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6077972132035806923, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_Pivot.x
@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6077972132035806923, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 6077972132035806923, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_LocalPosition.x
@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6077972132035806923, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 323
+      value: 124
       objectReference: {fileID: 0}
     - target: {fileID: 6077972132035806923, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -214,6 +214,14 @@ PrefabInstance:
     - target: {fileID: 6077972132035806923, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215292102715733742, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215292102715733742, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9013292535039571257, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_Color.b
@@ -3365,7 +3373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814490129813894819, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6077972132035806923, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_Pivot.x

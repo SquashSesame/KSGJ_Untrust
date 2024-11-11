@@ -221,7 +221,7 @@ namespace App
         public IEnumerator WaitTouch()
         {
             GameMain.Instance.TouchRequest();
-            while (GameMain.Instance.IsTouched() == false)
+            while (GameMain.Instance.IsTouched() == false && Main.Instance.ActiveMessage == CurrentType)
             {
                 yield return null;
             }
@@ -237,13 +237,13 @@ namespace App
         void Update()
         {
             if (Main.Instance.ActiveMessage == CurrentType) {
-                UpdateMessageControll();
+                  UpdateMessageControll();
             }
         }
         
         void UpdateMessageControll()
         {
-            if (IsEndOfMessage == false)
+            if (IsEndOfMessage == false && Main.Instance.ActiveMessage == CurrentType)
             {
                 switch (lastChar)
                 {

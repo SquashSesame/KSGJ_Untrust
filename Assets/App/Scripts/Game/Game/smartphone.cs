@@ -68,12 +68,15 @@ public class smartphone : Singleton<smartphone>
 
     void phoneClick()
     {
-        if (smartphoneScreen.activeInHierarchy == false)
+        if (smartphoneScreen.activeInHierarchy == false) {
             smartphoneScreen.SetActive(true);
+            Main.Instance.SetMessageActive(Main.TypeMessage.Smartphone);
+        }
         else if (smartphoneScreen.activeInHierarchy == true)
         {
             smartphoneScreen.SetActive(false);
             gameObject.SetActive(false);
+            Main.Instance.SetMessageActive(Main.TypeMessage.Game);
         }
     }
 
