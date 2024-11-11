@@ -182,7 +182,6 @@ namespace App
             cgTelop.alpha = 1;
             imgTelop.color = colBlackAlpha0;
             textMessage.color = Color.white;
-            this.gameObject.SetActive(true);
             yield return YieldFadeAlpha(1, 0, defFadeTime, cgTelop, () => { });
             cgTelop.gameObject.SetActive(false);
             textMessage.text = "";
