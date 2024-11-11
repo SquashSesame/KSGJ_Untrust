@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 namespace App
 {
-    public class MessageControll : Singleton<MessageControll>
+    public class MessageControll : MonoBehaviour
     {
         [SerializeField] private TMP_Text textName;
         [SerializeField] private CanvasGroup cvgpName;
@@ -182,7 +182,6 @@ namespace App
             cgTelop.alpha = 1;
             imgTelop.color = colBlackAlpha0;
             textMessage.color = Color.white;
-            this.gameObject.SetActive(true);
             yield return YieldFadeAlpha(1, 0, defFadeTime, cgTelop, () => { });
             cgTelop.gameObject.SetActive(false);
             textMessage.text = "";

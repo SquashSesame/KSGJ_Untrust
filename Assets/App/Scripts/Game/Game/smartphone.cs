@@ -45,7 +45,7 @@ public class smartphone : Singleton<smartphone>
         }
         if (Fader.Instance.GetFadeLevel(Fader.Layer.MAIN) > 0
             || Fader.Instance.GetFadeLevel(Fader.Layer.SUB) > 0
-            || MessageControll.Instance.IsTeloping
+            || Main.Instance.ScenarioMessage.IsTeloping
             ) {
             // フェード中は操作不能にする
             if (isAcceptOperation) {

@@ -6,25 +6,19 @@ using UnityEngine;
 
 namespace App
 {
-    public class ScenarilForGame : Singleton<ScenarilForGame>
+    public class ScenarioForSmartphone : MonoBehaviour
     {
-        bool _is_end = false;
-        public bool IsEnd { get => _is_end; }
-
-        int _selected = -1;
-        public int Selected { get => _selected; }
-        
         /// <summary>
         /// プロローグ
         /// </summary>
         public void Event_Prologue()
         {
-            _is_end = false;
             StartCoroutine(Scenario_Prologue());
         }
 
+        [SerializeField]
         private MessageControll Window {
-            get => MessageControll.Instance;
+            get => Main.Instance.SmartphoneMessage;
         }
 
         IEnumerator Scenario_Prologue()
