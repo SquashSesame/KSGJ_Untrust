@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 namespace App
@@ -33,6 +34,8 @@ namespace App
             Window.ClearMessage();
             Window.ForceClose();
 
+            Window.SetActiveSmartphoneButton(false);
+            
             yield return Window.OpenTelop("これは真実かどうかを見極めるゲームである", 0);
             yield return Fader.YieldFadeIn(ConstDef.FADETIME);
             yield return Window.WaitTouch();
@@ -45,7 +48,9 @@ namespace App
             yield return Window.Message("What have you been up to?");
             yield return Window.Message("I need to tell you something");
             yield return Window.CloseMessage();
-            
+
+            Window.SetActiveSmartphoneButton(true);
+
             yield return Window.OpenMessage();
             yield return Window.Message("Which one do you like?", false);
             yield return Window.Select("Apple", "Google", "Amazon");
