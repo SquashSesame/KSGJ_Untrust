@@ -8,6 +8,7 @@ public class smartphone : Singleton<smartphone>
     public Button smartphoneButton;
     public GameObject smartphoneScreen;
     public float timer;
+    public GameObject reputation;
 
     private bool isAcceptOperation = false;
     private CanvasGroup cgSmartphone;
@@ -40,8 +41,15 @@ public class smartphone : Singleton<smartphone>
         {
 
             Debug.Log("time up");
+            Main.Instance.GetComponent<ScenarioForGame>().reputation -= 1;
+
+            Debug.Log(Main.Instance.GetComponent<ScenarioForGame>().reputation);
             smartphoneScreen.SetActive(false);
             gameObject.SetActive(false);
+            Main.Instance.ScenarioMessage.ForceClose();
+
+
+
         }
         if (Fader.Instance.GetFadeLevel(Fader.Layer.MAIN) > 0
             || Fader.Instance.GetFadeLevel(Fader.Layer.SUB) > 0
