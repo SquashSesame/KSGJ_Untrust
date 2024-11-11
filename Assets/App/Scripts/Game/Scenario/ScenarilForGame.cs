@@ -43,32 +43,28 @@ namespace App
 
             yield return Window.OpenMessage();
             yield return Window.Message("Hi, how are you?");
-            yield return Window.Message("How’s it going?");
-            yield return Window.Message("We haven’t seen each other in a while.");
-            yield return Window.Message("What have you been up to?");
             yield return Window.Message("I need to tell you something");
             yield return Window.CloseMessage();
 
             Window.SetActiveSmartphoneButton(true);
 
             yield return Window.OpenMessage();
-            yield return Window.Message("Which one do you like?", false);
-            yield return Window.Select("Apple", "Google", "Amazon");
+            yield return Window.Message("Well, have you heard that the ducks are leaving lake Biwa?");
+            yield return Window.Message("The toxins in the lake are increasing and the fish are becoming contaminated.");
+            yield return Window.Message("So the ducks started dying out. Many have flocked to other places.");
+            yield return Window.Message("Many of them won’t be returning, or so it seems.");
+            yield return Window.Select("Believe", "Don't Believe");
             switch (Window.SelectResult()) {
                 case 0:
-                    yield return Window.Message("I like an Apple!!");
+                    yield return Window.Message("I worry for the future of our ecosystem.");
                     break;
             
                 case 1:
-                    yield return Window.Message("I like a Google!!");
+                    yield return Window.Message("Really?...");
                     break;
 
-                case 2:
-                    yield return Window.Message("I like an Amazon!!");
-                    break;
             }
 
-            yield return Window.Message("I need a lot of money!!");
             yield return Window.CloseMessage();
 
             yield return Fader.YieldFadeOut(ConstDef.FADETIME);
