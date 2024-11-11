@@ -23,38 +23,27 @@ namespace App
 
         IEnumerator Scenario_Prologue()
         {
-            Fader.SetFadeColor(Color.black);
-            Fader.SetFadeLevel(1.0f);
-            Window.ClearMessage();
-            Window.ForceClose();
 
-            Window.SetActiveSmartphoneButton(false);
-            
-            yield return Window.OpenTelop("これは真実かどうかを見極めるゲームである", 0);
-            yield return Fader.YieldFadeIn(ConstDef.FADETIME);
-            yield return Window.WaitTouch();
-            yield return Window.CloseTelop();
-
-            yield return Window.OpenMessage();
-            yield return Window.Message("Hi, how are you?");
-            yield return Window.Message("I need to tell you something");
-            yield return Window.CloseMessage();
-
-            Window.SetActiveSmartphoneButton(true);
-
-            yield return Window.OpenMessage();
-            yield return Window.Message("Well, have you heard that the ducks are leaving lake Biwa?");
-            yield return Window.Message("The toxins in the lake are increasing and the fish are becoming contaminated.");
-            yield return Window.Message("So the ducks started dying out. Many have flocked to other places.");
-            yield return Window.Message("Many of them won’t be returning, or so it seems.");
-            yield return Window.Select("Believe", "Don't Believe");
+            yield return Window.Select("DuckBill News: Ducks Flap from Lake Biwa", "DuckPedia: Duck Migration and Food Sources", "Birdwatcher Mike: Sayonara Biw");
             switch (Window.SelectResult()) {
                 case 0:
-                    yield return Window.Message("I worry for the future of our ecosystem.");
+                    yield return Window.Message("The time has come for the ducks to migrate once again. At record high temperatures this year the ducks’ season migration has been delayed by two and a half months. Their extended stay in the area has contributed to a decreasing population of local fish life in the Biwa-Kyoto region, and it’s estimated that this will continue to curb the population as environmental changes occur. The migration of animals continues to be a major concern for scientists as climate change affects the world.Ducks can predict the coming of major weather shifts, storms, and changes in the environment, and are a major source of information for scientists to combat and evaluate the climate situation.");
+                    yield return Window.Select("Ducks", "Biwa");
+                    switch (Window.SelectResult())
+                    {
+                        case 0: yield return Window.Message("During migration season, ducks gather in large groups to embark on a journey as a simultaneous movement. This often occurs twice a year, between breeding and wintering grounds. The timing is affected by changes in day length, using celestial cues from the Sun and the stars, the Earth’s magnetic field, and the duck’s own mental maps. Ducks have a diverse diet ranging between seed, fish, aquatic plants, and invertebrates.When these sources face scarcity they are prompted to begin migration to warmer regions and more reliable sources.");
+                            break;
+                        case 1: yield return Window.Message("Take-off! The birds are gone! The group of ducks I’ve been photographing for my lovely followers have just gone ahead. I arrived on the premise at around 5 am and found them in the air migrating to their next destination. Sayonara ducks!");
+                            break;
+                    }
                     break;
             
                 case 1:
-                    yield return Window.Message("Really?...");
+                    yield return Window.Message("During migration season, ducks gather in large groups to embark on a journey as a simultaneous movement. This often occurs twice a year, between breeding and wintering grounds. The timing is affected by changes in day length, using celestial cues from the Sun and the stars, the Earth’s magnetic field, and the duck’s own mental maps. Ducks have a diverse diet ranging between seed, fish, aquatic plants, and invertebrates.When these sources face scarcity they are prompted to begin migration to warmer regions and more reliable sources.");
+                    break;
+                
+                case 2:
+                    yield return Window.Message("Take-off! The birds are gone! The group of ducks I’ve been photographing for my lovely followers have just gone ahead. I arrived on the premise at around 5 am and found them in the air migrating to their next destination. Sayonara ducks!");
                     break;
 
             }
