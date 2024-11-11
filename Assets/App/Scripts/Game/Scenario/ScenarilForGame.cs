@@ -8,24 +8,15 @@ namespace App
 {
     public class ScenarilForGame : Singleton<ScenarilForGame>
     {
-        bool _is_end = false;
-        public bool IsEnd { get => _is_end; }
-
-        int _selected = -1;
-        public int Selected { get => _selected; }
-        
         /// <summary>
         /// プロローグ
         /// </summary>
         public void Event_Prologue()
         {
-            _is_end = false;
             StartCoroutine(Scenario_Prologue());
         }
 
-        private MessageControll Window {
-            get => MessageControll.Instance;
-        }
+        [SerializeField] private MessageControll Window;
 
         IEnumerator Scenario_Prologue()
         {
@@ -51,25 +42,25 @@ namespace App
 
             Window.SetActiveSmartphoneButton(true);
 
-            yield return Window.OpenMessage();
-            yield return Window.Message("Which one do you like?", false);
-            yield return Window.Select("Apple", "Google", "Amazon");
-            switch (Window.SelectResult()) {
-                case 0:
-                    yield return Window.Message("I like an Apple!!");
-                    break;
-            
-                case 1:
-                    yield return Window.Message("I like a Google!!");
-                    break;
-
-                case 2:
-                    yield return Window.Message("I like an Amazon!!");
-                    break;
-            }
-
-            yield return Window.Message("I need a lot of money!!");
-            yield return Window.CloseMessage();
+            // yield return Window.OpenMessage();
+            // yield return Window.Message("Which one do you like?", false);
+            // yield return Window.Select("Apple", "Google", "Amazon");
+            // switch (Window.SelectResult()) {
+            //     case 0:
+            //         yield return Window.Message("I like an Apple!!");
+            //         break;
+            //
+            //     case 1:
+            //         yield return Window.Message("I like a Google!!");
+            //         break;
+            //
+            //     case 2:
+            //         yield return Window.Message("I like an Amazon!!");
+            //         break;
+            // }
+            //
+            // yield return Window.Message("I need a lot of money!!");
+            // yield return Window.CloseMessage();
 
             yield return Fader.YieldFadeOut(ConstDef.FADETIME);
             

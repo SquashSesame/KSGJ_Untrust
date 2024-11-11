@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 namespace App
 {
-    public class MessageControll : Singleton<MessageControll>
+    public class MessageControll : MonoBehaviour
     {
         [SerializeField] private TMP_Text textName;
         [SerializeField] private CanvasGroup cvgpName;
