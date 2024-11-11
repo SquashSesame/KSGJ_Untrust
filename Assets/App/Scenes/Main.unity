@@ -711,7 +711,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463092190}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2539,6 +2539,7 @@ GameObject:
   - component: {fileID: 2125240440}
   - component: {fileID: 2125240439}
   - component: {fileID: 2125240441}
+  - component: {fileID: 2125240442}
   m_Layer: 5
   m_Name: SmartphoneIcon
   m_TagString: Untagged
@@ -2585,7 +2586,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -8473777559874387311, guid: f1e4bbca1807345ad941d576c7eab8d0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2660,19 +2661,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2125240437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!95 &2125240441
 Animator:
   serializedVersion: 7
@@ -2695,6 +2684,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &2125240442
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125240434}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2145386518
 GameObject:
   m_ObjectHideFlags: 0
@@ -2841,6 +2842,10 @@ PrefabInstance:
     - target: {fileID: 4814490129813894819, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_Name
       value: MessageWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814490129813894819, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6077972132035806923, guid: e627fa1ec24d748deb208dfcec40a606, type: 3}
       propertyPath: m_Pivot.x
