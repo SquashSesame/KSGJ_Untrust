@@ -20,6 +20,8 @@ namespace App
         [SerializeField] private CanvasGroup cgTelop = null;
         [SerializeField] private TMP_Text textMessage = null;
         [SerializeField] private UnityEngine.UI.Image imgTelop = null;
+
+        [SerializeField] private smartphone btnSmartphone;
         
         static Color colWhiteAlpha0 = new Color(1, 1, 1, 1);
         static Color colBlackAlpha0 = new Color(0, 0, 0, 1);
@@ -86,6 +88,17 @@ namespace App
             yield return null;
         }
 
+        #region Smartphone
+
+        public void SetActiveSmartphoneButton(bool isActive)
+        {
+            btnSmartphone.gameObject.SetActive(isActive);
+        }
+        
+        
+        #endregion
+        
+        
         #region Message
         
         public IEnumerator OpenMessage()
