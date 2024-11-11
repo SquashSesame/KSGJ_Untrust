@@ -7,6 +7,7 @@ public class smartphone : Singleton<smartphone>
 {
     public Button smartphoneButton;
     public GameObject smartphoneScreen;
+    public float timer;
 
     private bool isAcceptOperation = false;
     private CanvasGroup cgSmartphone;
@@ -21,10 +22,27 @@ public class smartphone : Singleton<smartphone>
         smartphoneButton.interactable = false;
         isAcceptOperation = false;
     }
+    private void OnEnable()
+    {
+        timer = Random.Range(10, 25);
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            Debug.Log(timer);
+        }
+
+        else
+        {
+
+            Debug.Log("time up");
+            smartphoneScreen.SetActive(false);
+            gameObject.SetActive(false);
+        }
         if (Fader.Instance.GetFadeLevel(Fader.Layer.MAIN) > 0
             || Fader.Instance.GetFadeLevel(Fader.Layer.SUB) > 0
             || MessageControll.Instance.IsTeloping
@@ -47,9 +65,16 @@ public class smartphone : Singleton<smartphone>
         }
     }
 
-    
+
     void phoneClick()
     {
-        smartphoneScreen.SetActive(true);
+        if (smartphoneScreen.activeInHierarchy == false)
+            smartphoneScreen.SetActive(true);
+        else if (smartphoneScreen.activeInHierarchy == true)
+        {
+            smartphoneScreen.SetActive(false);
+            gameObject.SetActive(false);
+        }
     }
+
 }

@@ -8,15 +8,24 @@ namespace App
 {
     public class ScenarilForGame : Singleton<ScenarilForGame>
     {
+        bool _is_end = false;
+        public bool IsEnd { get => _is_end; }
+
+        int _selected = -1;
+        public int Selected { get => _selected; }
+        
         /// <summary>
         /// プロローグ
         /// </summary>
         public void Event_Prologue()
         {
+            _is_end = false;
             StartCoroutine(Scenario_Prologue());
         }
 
-        [SerializeField] private MessageControll Window;
+        private MessageControll Window {
+            get => MessageControll.Instance;
+        }
 
         IEnumerator Scenario_Prologue()
         {
@@ -34,33 +43,29 @@ namespace App
 
             yield return Window.OpenMessage();
             yield return Window.Message("Hi, how are you?");
-            yield return Window.Message("How’s it going?");
-            yield return Window.Message("We haven’t seen each other in a while.");
-            yield return Window.Message("What have you been up to?");
             yield return Window.Message("I need to tell you something");
             yield return Window.CloseMessage();
 
             Window.SetActiveSmartphoneButton(true);
 
-            // yield return Window.OpenMessage();
-            // yield return Window.Message("Which one do you like?", false);
-            // yield return Window.Select("Apple", "Google", "Amazon");
-            // switch (Window.SelectResult()) {
-            //     case 0:
-            //         yield return Window.Message("I like an Apple!!");
-            //         break;
-            //
-            //     case 1:
-            //         yield return Window.Message("I like a Google!!");
-            //         break;
-            //
-            //     case 2:
-            //         yield return Window.Message("I like an Amazon!!");
-            //         break;
-            // }
-            //
-            // yield return Window.Message("I need a lot of money!!");
-            // yield return Window.CloseMessage();
+            yield return Window.OpenMessage();
+            yield return Window.Message("Well, have you heard that the ducks are leaving lake Biwa?");
+            yield return Window.Message("The toxins in the lake are increasing and the fish are becoming contaminated.");
+            yield return Window.Message("So the ducks started dying out. Many have flocked to other places.");
+            yield return Window.Message("Many of them won’t be returning, or so it seems.");
+            yield return Window.Select("Believe", "Don't Believe");
+            switch (Window.SelectResult()) {
+                case 0:
+                    yield return Window.Message("I worry for the future of our ecosystem.");
+                    break;
+            
+                case 1:
+                    yield return Window.Message("Really?...");
+                    break;
+
+            }
+
+            yield return Window.CloseMessage();
 
             yield return Fader.YieldFadeOut(ConstDef.FADETIME);
             
