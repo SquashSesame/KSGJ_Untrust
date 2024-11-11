@@ -20,7 +20,7 @@ namespace App
         [SerializeField] private CanvasGroup cgTelop = null;
         [SerializeField] private TMP_Text textMessage = null;
         [SerializeField] private UnityEngine.UI.Image imgTelop = null;
-
+        
         static Color colWhiteAlpha0 = new Color(1, 1, 1, 1);
         static Color colBlackAlpha0 = new Color(0, 0, 0, 1);
         private const float defFadeTime = ConstDef.FADETIME;
@@ -150,6 +150,10 @@ namespace App
         #endregion
 
         #region Telop
+        
+        public bool IsTeloping {
+            get => cgTelop.gameObject.activeSelf;
+        }
         
         public IEnumerator OpenTelop(string message, float time=ConstDef.FADETIME)
         {
