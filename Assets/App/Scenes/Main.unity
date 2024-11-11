@@ -1058,8 +1058,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: f1e4bbca1807345ad941d576c7eab8d0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: f1e4bbca1807345ad941d576c7eab8d0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8938bd968e40d4264b8424e0a4ba0a8e, type: 2}
     - target: {fileID: 7878350319992209165, guid: f1e4bbca1807345ad941d576c7eab8d0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -1950,6 +1954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a123bfa4570468cba5e6c278295a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiCamera: {fileID: 0}
 --- !u!114 &1695375256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2361,7 +2366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2049638090
 Transform:
   m_ObjectHideFlags: 0
@@ -2940,6 +2945,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1801057395}
     m_Modifications:
+    - target: {fileID: 334120469157845874, guid: d866e265ef8af4fe49809643e5b23db4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 334120469157845874, guid: d866e265ef8af4fe49809643e5b23db4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 334120469157845874, guid: d866e265ef8af4fe49809643e5b23db4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 334120469157845874, guid: d866e265ef8af4fe49809643e5b23db4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
