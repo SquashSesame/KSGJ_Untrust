@@ -10,6 +10,7 @@ namespace App
 {
     public class MessageControll : MonoBehaviour
     {
+        [SerializeField] private Main.TypeMessage CurrentType;
         [SerializeField] private TMP_Text textName;
         [SerializeField] private CanvasGroup cvgpName;
         [SerializeField] private CanvasGroup cvgpMessageWithFace;
@@ -135,7 +136,7 @@ namespace App
 
             // メッセージエリア
             SetMessageText(string.Empty);
-            this.strMessage = message;
+            strMessage = message;
             topMessage = 0;
             idxMessage = 0;
             cntMessage = message.Length;
@@ -235,7 +236,9 @@ namespace App
         // Update is called once per frame
         void Update()
         {
-            UpdateMessageControll();
+            if (Main.Instance.ActiveMessage == CurrentType) {
+                UpdateMessageControll();
+            }
         }
         
         void UpdateMessageControll()

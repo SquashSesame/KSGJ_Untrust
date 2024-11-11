@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class Main : Singleton<Main>
 {
+    public enum TypeMessage
+    {
+        Game,
+        Smartphone,
+    }
+
+    [SerializeField] public TypeMessage ActiveMessage = TypeMessage.Game;
     [SerializeField] public MessageControll ScenarioMessage;
     [SerializeField] public MessageControll SmartphoneMessage;
 
