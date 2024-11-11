@@ -24,8 +24,10 @@ namespace App
 
         IEnumerator Scenario_Prologue()
         {
+            yield return Window.CloseMessage();
 
             yield return Window.Select("DuckBill News: Ducks Flap from Lake Biwa", "DuckPedia: Duck Migration and Food Sources", "Birdwatcher Mike: Sayonara Biw");
+            yield return Window.OpenMessage();
             switch (Window.SelectResult())
             {
                 case 0:
@@ -56,6 +58,7 @@ namespace App
 
             yield return Fader.YieldFadeOut(ConstDef.FADETIME);
 
+            Main.Instance.SetMessageActive(Main.TypeMessage.Game);
         }
     }
 }

@@ -8,12 +8,10 @@ namespace App
 {
     public class ScenarioForGame : MonoBehaviour
     {
-            public int reputation = 5;
+        
     /// <summary>
     /// プロローグ
     /// </summary>
-    
-
     public void Event_Prologue()
     {
         StartCoroutine(Scenario_Prologue());
@@ -56,16 +54,14 @@ namespace App
         {
             case 0:
                 yield return Window.Message("I worry for the future of our ecosystem.");
-                    reputation += 1;
                 break;
 
             case 1:
                 yield return Window.Message("Really?...");
-                    reputation -= 1;
                 break;
 
         }
-            Debug.Log(reputation);
+
         yield return Window.CloseMessage();
 
         yield return Fader.YieldFadeOut(ConstDef.FADETIME);
