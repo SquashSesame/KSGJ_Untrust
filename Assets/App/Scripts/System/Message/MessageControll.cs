@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,9 +8,10 @@ namespace App
     public class MessageControll : MonoBehaviour
     {
         [SerializeField] private Main.TypeMessage CurrentType;
+        [SerializeField] public SelectControll SelectCtrl;
         [SerializeField] private TMP_Text textName;
         [SerializeField] private CanvasGroup cvgpName;
-        [SerializeField] private CanvasGroup cvgpMessageWithFace;
+        [SerializeField] public CanvasGroup cvgpMessageWithFace;
         [SerializeField] private CanvasGroup cvgpMessage;
         [SerializeField] private TMP_Text textAreaWithFace;
         [SerializeField] private UnityEngine.UI.Image imgFace;
@@ -96,7 +94,6 @@ namespace App
             btnSmartphone.gameObject.SetActive(isActive);
         }
         
-        
         #endregion
         
         
@@ -118,6 +115,10 @@ namespace App
 
         public IEnumerator Message(string message)
         {
+            if (cvgpMessageWithFace.alpha == 0) {
+                yield return OpenMessage();
+            }
+            
             yield return Message(message, "", true);
         }
         
@@ -145,6 +146,7 @@ namespace App
 
             if (isWait) {
                 yield return WaitTouch();
+                SetMessageText(string.Empty);
             }
 
             yield return null;
@@ -154,6 +156,7 @@ namespace App
         {
             cvgpMessageWithFace.alpha = 0;
             cvgpMessageWithFace.gameObject.SetActive(false);
+            ClearMessage();
         }
 
         public void ClearMessage()
@@ -195,25 +198,27 @@ namespace App
 
         public IEnumerator Select(params string[] args)
         {
+            SelectCtrl.Close();
+            
             float itemHeight = SELECTITEM_HEIGHT * (float)args.Length * 0.5f;
             
             foreach (var it in args) {
-                var item = SelectControll.Instance.AddItem(it);
+                var item = SelectCtrl.AddItem(it);
                 item.gameObject.transform.localPosition = new Vector3(0, itemHeight, 0);
                 itemHeight -= SELECTITEM_HEIGHT;
             }
 
-            while (SelectControll.Instance.IsEndOfSelected() == false) {
+            while (SelectCtrl.IsEndOfSelected() == false) {
                 yield return null;
             }
             
-            SelectControll.Instance.Close();
+            SelectCtrl.Close();
             yield return null;
         }
         
         public int SelectResult()
         {
-            return SelectControll.Instance.Result;
+            return SelectCtrl.Result;
         }
         
         #endregion
@@ -252,7 +257,7 @@ namespace App
                         // ボタンが押されるまで待つ
                         GameMain.Instance.TouchRequest();
                         if (GameMain.Instance.IsTouched()
-                            && (SelectControll.Instance == null || SelectControll.Instance.IsExceptSelection() == true))
+                            && (SelectCtrl == null || SelectCtrl.IsExceptSelection() == true))
                         {
                             GameMain.Instance.DestoryTouchIcon();
                             // 改行送り
@@ -270,7 +275,7 @@ namespace App
                     default:
                         // クリックされたら全表示
                         if (GameMain.Instance.IsTouched()
-                            && (SelectControll.Instance == null || SelectControll.Instance.IsExceptSelection() == true))
+                            && (SelectCtrl == null || SelectCtrl.IsExceptSelection() == true))
                         {
                             // 次の改行または文の終了まで
                             while ((topMessage + idxMessage + 1) < cntMessage

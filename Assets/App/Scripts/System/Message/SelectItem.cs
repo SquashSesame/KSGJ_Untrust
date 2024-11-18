@@ -14,6 +14,7 @@ namespace App
         [SerializeField] public TMP_Text textItem;
         [SerializeField] UnityEngine.UI.Image imgIcon = null;
 
+        private SelectControll parentCtrl;
         UnityEngine.UI.Button button = null;
 
         // Use this for initialization
@@ -36,7 +37,7 @@ namespace App
 
         public void OnSelected()
         {
-            SelectControll.Instance.SelectedItem(this);
+            parentCtrl.SelectedItem(this);
         }
 
         public void Close()
@@ -49,8 +50,9 @@ namespace App
                 });
         }
 
-        public void SetText(string msg, Sprite sprIcon = null)
+        public void SetText(SelectControll parent, string msg, Sprite sprIcon = null)
         {
+            this.parentCtrl = parent;
             if (textItem != null)
             {
                 textItem.text = msg;

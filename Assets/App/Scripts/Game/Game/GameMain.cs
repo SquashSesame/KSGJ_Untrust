@@ -83,7 +83,8 @@ namespace App
                     if (smartphone.Instance != null) {
                         var rectTrans = smartphone.Instance.GetComponent<RectTransform>();
                         Vector2 localPoint = new Vector2();
-                        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTrans, touchPoint,
+                        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                            rectTrans, touchPoint,
                             GetComponent<Camera>(), out localPoint);
                         if (rectTrans.rect.Contains(localPoint)) {
                             ret = false;

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace App
 {
-    public class SelectControll : SingletonDontDestroy<SelectControll>
+    public class SelectControll : MonoBehaviour
     {
         [SerializeField] private SoundList.SE clickSE = SoundList.SE.NONE;
         [SerializeField] public RectTransform centerGui;
@@ -38,7 +38,7 @@ namespace App
             objItem.gameObject.SetActive(true);
 
             var item = objItem.GetComponent<SelectItem>();
-            item.SetText(text, sprIcon);
+            item.SetText(this, text, sprIcon);
             item.selectNo = list.Count;
             // List
             list.Add(item);
