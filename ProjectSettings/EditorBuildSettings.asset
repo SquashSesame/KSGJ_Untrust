@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/App/Scenes/Main.unity
     guid: e3871552aed1c4c71bed178751b8ea9c
+  - enabled: 1
+    path: Assets/App/Scenes/Staffroll.unity
+    guid: 0e4b5982d92d048e88dc95d42a50f655
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: f07f59c536b37424195379d511dc54a3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

@@ -30,29 +30,19 @@ public class Main : Singleton<Main>
         ActiveMessage = typeMes;
         switch (typeMes) {
             case TypeMessage.Game:
-                // ScenarioMessage.gameObject.SetActive(true);
                 ScenarioMessage.SelectCtrl.centerGui.transform.DOLocalMoveY(0, ConstDef.FADETIME);
                 ScenarioMessage.cvgpMessageWithFace.transform.DOLocalMoveY(0, ConstDef.FADETIME);
-                // ScenarioForGame.gameObject.SetActive(true);
                 
                 SmartphoneMessage.SelectCtrl.centerGui.transform.DOLocalMoveY(1000, ConstDef.FADETIME);
-                SmartphoneMessage.cvgpMessageWithFace.transform.DOLocalMoveY(-1000, ConstDef.FADETIME).OnComplete(() => {
-                    // SmartphoneMessage.gameObject.SetActive(false);
-                });
-                // ScenarioForSmartphone.gameObject.SetActive(false);
+                SmartphoneMessage.cvgpMessageWithFace.transform.DOLocalMoveY(-1000, ConstDef.FADETIME);
                 smartphone.Instance.SetShow(false);
                 break;
             
             case TypeMessage.Smartphone:
                 ScenarioMessage.SelectCtrl.centerGui.transform.DOLocalMoveY(1000, ConstDef.FADETIME);
-                ScenarioMessage.cvgpMessageWithFace.transform.DOLocalMoveY(-1000, ConstDef.FADETIME).OnComplete(() => {
-                    // ScenarioMessage.gameObject.SetActive(false);
-                });
-                // ScenarioForGame.gameObject.SetActive(false);
-                // SmartphoneMessage.gameObject.SetActive(true);
+                ScenarioMessage.cvgpMessageWithFace.transform.DOLocalMoveY(-1000, ConstDef.FADETIME);
                 SmartphoneMessage.SelectCtrl.centerGui.transform.DOLocalMoveY(0, ConstDef.FADETIME);
                 SmartphoneMessage.cvgpMessageWithFace.transform.DOLocalMoveY(100, ConstDef.FADETIME);
-                // ScenarioForSmartphone.gameObject.SetActive(true);
                 ScenarioForSmartphone.StartFunction();
                 break;
         }
